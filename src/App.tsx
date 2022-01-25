@@ -10,7 +10,6 @@ import Layout from '../components/Layout'
 export default function App() {
   return (
     <Layout>
-    <div className="container">
       <AnimateSharedLayout>
         <Router>
           <Routes>
@@ -19,7 +18,6 @@ export default function App() {
           </Routes>
         </Router>
       </AnimateSharedLayout>
-    </div>
     </Layout>
   );
 }

@@ -13,7 +13,7 @@ export function Item({ id }:any) {
         exit={{ opacity: 0, transition: { duration: 0.15 } }}
         transition={{ duration: 0.2, delay: 0.15 }}
         style={{ pointerEvents: "auto" }}
-        className="overlay"
+        className="z-20 overlay"
       >
         <Link to="/" />
       </motion.div>
