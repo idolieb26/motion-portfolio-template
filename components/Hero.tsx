@@ -5,7 +5,7 @@ const Hero = () => {
         <section className='flex flex-row items-center justify-center my-10 h-screen'>
             <div className="">
                 <h1 className='text-4xl text-white'>
-                    Bienvenu sur<br />
+                    Bienvenue sur<br />
                     Mon portfolio
                 </h1>
                 <div className='text-white'>
