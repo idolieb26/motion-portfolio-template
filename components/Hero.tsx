@@ -6,7 +6,7 @@ const Hero = () => {
             <div className="">
                 <h1 className='text-4xl text-white'>
                     Bienvenue sur<br />
-                    Mon portfolio
+                    mon portfolio
                 </h1>
                 <div className='text-white'>
                     Mon objectif est de vous rendre inoubliable !
