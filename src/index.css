@@ -17,6 +17,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   overflow-y: scroll;
+  overflow-x: hidden
 }
 
 code {
@@ -47,8 +48,6 @@ code {
   radial-gradient(at 45% 10%, hsla(198,74%,67%,1) 0, transparent 42%),  
   radial-gradient(at 34% 70%, hsla(33,68%,73%,1) 0, transparent 57%);
 }
-
-// Cards
 
 .screen {
   width: 100%;
