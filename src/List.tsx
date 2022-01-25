@@ -11,7 +11,7 @@ function Card({ id, title, category, theme }:any) {
             className="card-image-container"
             layoutId={`card-image-container-${id}`}
           >
-            <img className="card-image" src={`images/${id}.jpg`} alt="" />
+            <img className="card-image" src={`../images/${id}.jpg`} alt="" />
           </motion.div>
           <motion.div
             className="title-container"
@@ -29,7 +29,7 @@ function Card({ id, title, category, theme }:any) {
 
 export function List({ selectedId }:any) {
   return (
-    <ul className="card-list">
+    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
       {items.map((card:any) => (
         <Card key={card.id} {...card} isSelected={card.id === selectedId} />
       ))}
