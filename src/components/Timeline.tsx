@@ -4,8 +4,9 @@ import TimelineElement from './TimelineElement';
 const Timeline = () => {
     return (
         <section id="apropos" className="mx-10 lg:mx-20 antialiased relative z-0">
+            <hr />
             <div>
-                <h3 className="text-3xl text-white">
+                <h3 className="text-4xl text-white py-6">
                     A propos de moi
                 </h3>
                 <div className='relative container mx-auto px-6 my-6 flex flex-col space-y-8'>
