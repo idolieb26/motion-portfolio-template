@@ -7,7 +7,7 @@ function Card({ id, title, category, image }:IProject) {
   return (
     <motion.li whileHover={{ scale: 1.03 }} className="card h-[80vw] sm:h-[40vw] lg:h-[25vw]">
       <div className="card-content-container">
-        <motion.div className="card-content" layoutId={`card-container-${id}`}>
+        <motion.div className="card-content shadow-md" layoutId={`card-container-${id}`}>
           <motion.div
             className="card-image-container"
             layoutId={`card-image-container-${id}`}
@@ -15,7 +15,7 @@ function Card({ id, title, category, image }:IProject) {
             <img className="card-image" src={image} alt={title} />
           </motion.div>
           <motion.div
-            className="absolute left-6 top-4 max-w-[300px]"
+            className="absolute text-white left-6 top-4 max-w-[300px]"
             layoutId={`title-container-${id}`}
           >
             <span className="category">{category}</span>

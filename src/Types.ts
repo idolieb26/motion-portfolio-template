@@ -7,7 +7,8 @@ export interface IProject {
     source: string;
     visit:  string;
     id: string;
-    isSelected?: boolean
+    date: string;
+    isSelected?: boolean;
 }
 
 export interface ITimeElement {
