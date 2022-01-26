@@ -57,8 +57,8 @@ const ProjectItem = ({ id }:{id:string}) => {
           </motion.div>
           <hr />
           <motion.div>
-            <div className='mx-6'>
-              <div className="flex mt-2 font-semibold">Techs :</div>
+            <div className={`mx-6 pt-4 ${(!source && !visit) && "pb-6"}`}>
+              <div className="flex font-semibold">Techs :</div>
               <div className=''>
                 {tags.map((tag:string, i:number) => (
                   <span key={i}>
@@ -67,7 +67,7 @@ const ProjectItem = ({ id }:{id:string}) => {
                 ))}
               </div>
             </div>
-            <div className={`grid ${visit && source ? "grid-cols-2" : "grid-cols-1"} pt-4`}>
+            {(visit || source) && <div className={`grid ${visit && source ? "grid-cols-2" : "grid-cols-1"} pt-4`}>
               {visit &&
               <a href={visit} target='_blank' className="bg-teal-500 hover:bg-teal-700 text-white font-semibold py-6 text-center">
                 <div className="flex justify-center items-center">
@@ -81,7 +81,7 @@ const ProjectItem = ({ id }:{id:string}) => {
                   <span>Voir le code</span>
                 </div>
               </a>}
-            </div>
+            </div>}
           </motion.div>
         </motion.div>
       </div>
