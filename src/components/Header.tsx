@@ -54,32 +54,32 @@ const Header = () => {
                             <AiOutlineClose onClick={() => setToggleMenu(false)} />
                         </li>
                         <div>
-                            <a href="/#projets" className='text-lg cursor-pointer px-2'>
+                            <a href="/#projets" className='text-lg cursor-pointer px-2' onClick={() => setToggleMenu(false)}>
                                 Projets
                             </a>
                         </div>
                         <div>
-                            <a href="/#technos" className='text-lg cursor-pointer px-2'>
+                            <a href="/#technos" className='text-lg cursor-pointer px-2' onClick={() => setToggleMenu(false)}>
                                 Technos
                             </a>
                         </div>
                         <div>
-                            <a href="/#apropos" className='text-lg cursor-pointer px-2'>
+                            <a href="/#apropos" className='text-lg cursor-pointer px-2' onClick={() => setToggleMenu(false)}>
                                 A propos
                             </a>
                         </div>
                         <div>
-                            <a href="https://github.com/AurelTBE" target="_blank" className="cursor-pointer px-2 text-3xl">
+                            <a href="https://github.com/AurelTBE" target="_blank" className="cursor-pointer px-2 text-3xl" onClick={() => setToggleMenu(false)}>
                                 <AiFillGithub />
                             </a>
                         </div>
                         <div>
-                            <a href="https://www.linkedin.com/in/aurelientrouble/" target="_blank" className="cursor-pointer px-2 text-3xl">
+                            <a href="https://www.linkedin.com/in/aurelientrouble/" target="_blank" className="cursor-pointer px-2 text-3xl" onClick={() => setToggleMenu(false)}>
                                 <AiFillLinkedin />
                             </a>
                         </div>
                         <div>
-                            <a href="https://www.instagram.com/" target="_blank" className="cursor-pointer px-2 text-3xl">
+                            <a href="https://www.instagram.com/" target="_blank" className="cursor-pointer px-2 text-3xl" onClick={() => setToggleMenu(false)}>
                                 <AiFillInstagram />
                             </a>
                         </div>
