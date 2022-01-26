@@ -1,16 +1,42 @@
-import { projects } from '../constants/projects';
-import ProjectCard from './ProjectCard';
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { projects } from '../constants/projects'
 
-const Projects = () => {
-    return (
-        <section id="projets" className="mx-10 lg:mx-20 py-20">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
-                {projects.map((project, index) => (
-                    <ProjectCard project={project} key={project.title} index={index} />
-                ))}
-            </div>
-        </section>
-    )
+function Card({ id, title, category, image }:any) {
+  return (
+    <motion.li whileHover={{ scale: 1.03 }} className="card h-[80vw] sm:h-[40vw] lg:h-[25vw]">
+      <div className="card-content-container">
+        <motion.div className="card-content" layoutId={`card-container-${id}`}>
+          <motion.div
+            className="card-image-container"
+            layoutId={`card-image-container-${id}`}
+          >
+            <img className="card-image" src={image} alt={title} />
+          </motion.div>
+          <motion.div
+            className="absolute left-6 top-4 max-w-[300px]"
+            layoutId={`title-container-${id}`}
+          >
+            <span className="category">{category}</span>
+            <h2>{title}</h2>
+          </motion.div>
+        </motion.div>
+      </div>
+      <Link to={id} className={`card-open-link`} />
+    </motion.li>
+  );
+}
+
+const Projects = ({ selectedId }:any) => {
+  return (
+    <section id="projets" className="mx-10 lg:mx-20 py-20">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
+        {projects.map((project:any) => (
+          <Card key={project.id} {...project} isSelected={project.id === selectedId} />
+        ))}
+      </ul>
+    </section>
+  );
 }
 
 export default Projects

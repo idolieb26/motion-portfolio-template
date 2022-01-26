@@ -1,27 +1,23 @@
 import { AnimatePresence } from "framer-motion";
 import { useParams } from "react-router-dom";
 import Hero from '../components/Hero';
-import Projects from '../components/Projects';
 import Technologies from '../components/Technologies';
 import Timeline from '../components/Timeline';
-import { Item } from "./Item";
-import { List } from "./List";
+import ProjectItem from "../components/ProjectItem";
+import Projects from "../components/Projects";
 
-type Props = {};
-
-const Index = (props: Props) => {
+const Index = () => {
     let { id } = useParams();
     const imageHasLoaded = true;
     
     return (
         <>
             <Hero />
-            <List selectedId={id} />
+            <Projects selectedId={id} />
             <Technologies />
             <Timeline />
-            <Projects />
             <AnimatePresence>
-                {id && imageHasLoaded && <Item id={id} key="item" />}
+                {id && imageHasLoaded && <ProjectItem id={id} key="item" />}
             </AnimatePresence>
         </>
     )
