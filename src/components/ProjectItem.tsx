@@ -1,19 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { projects } from "../constants/projects"
+import { projects } from "../../constants/projects"
+import { IProject } from "../Types"
 
 const ProjectItem = ({ id }:{id:string}) => {
-  interface IProject {
-    category: string
-    title:  string;
-    description:  string;
-    image:  string;
-    tags: string[];
-    source: string;
-    visit:  string;
-    id: string;
-  }
-
   const project = projects.find((project) => project.id === id);
   if(!project) {
     return (

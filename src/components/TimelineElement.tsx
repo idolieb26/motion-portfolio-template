@@ -1,12 +1,8 @@
 import { MdWork, MdSchool } from "react-icons/md"
 import { motion } from "framer-motion"
+import { ITimeElement } from "../Types"
 
-type Props = {
-    element: any
-};
-
-const TimelineElement = ({element}: Props) => {    
-    
+const TimelineElement = ({element}: {element:ITimeElement}) => {    
     const iconSelect = (icon: string) => {
         switch (icon) {
             case "work":

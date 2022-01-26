@@ -1,11 +1,11 @@
-import { AnimateSharedLayout, AnimatePresence } from "framer-motion";
+import { AnimateSharedLayout } from "framer-motion";
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
 import Index from './Index';
-import Layout from '../components/Layout'
+import Layout from './components/Layout'
 
 export default function App() {
   return (

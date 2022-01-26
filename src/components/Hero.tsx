@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Hero = () => {
     return (
         <section className='flex flex-row items-center justify-center my-10 h-screen'>

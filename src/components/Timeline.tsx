@@ -1,14 +1,7 @@
-import { TimeLineData } from '../constants/timeline';
+import { TimeLineData } from '../../constants/timeline';
 import TimelineElement from './TimelineElement';
 
-
-interface Props {
-    
-}
-
-const Timeline = (props: Props) => {
-
-
+const Timeline = () => {
     return (
         <section id="apropos" className="mx-10 lg:mx-20 antialiased">
             <div>
