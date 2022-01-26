@@ -43,6 +43,9 @@ const TimelineElement = ({element}: {element:ITimeElement}) => {
                         {iconSelect(element.icon)}
                     </div>
                 </motion.div>
+                <div className="absolute">
+                    
+                </div>
                 <motion.div 
                     initial={{ 
                         x: isEven(element.id) ? -100 : 100,

@@ -3,7 +3,7 @@ import TimelineElement from './TimelineElement';
 
 const Timeline = () => {
     return (
-        <section id="apropos" className="mx-10 lg:mx-20 antialiased">
+        <section id="apropos" className="mx-10 lg:mx-20 antialiased relative z-0">
             <div>
                 <h3 className="text-3xl text-white">
                     A propos de moi

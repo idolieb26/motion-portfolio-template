@@ -4,8 +4,8 @@ export interface IProject {
     description:  string;
     image:  string;
     tags: string[];
-    source: string;
-    visit:  string;
+    source?: string;
+    visit?:  string;
     id: string;
     date: string;
     isSelected?: boolean;

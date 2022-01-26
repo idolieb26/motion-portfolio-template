@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { projects } from "../../constants/projects"
 import { IProject } from "../Types"
 import { CgClose } from "react-icons/cg"
+import { FaExternalLinkAlt, FaCode } from "react-icons/fa"
 
 const ProjectItem = ({ id }:{id:string}) => {
   const project = projects.find((project) => project.id === id);
@@ -66,13 +67,20 @@ const ProjectItem = ({ id }:{id:string}) => {
                 ))}
               </div>
             </div>
-            <div className='grid grid-cols-2 pt-4'>
+            <div className={`grid ${visit && source ? "grid-cols-2" : "grid-cols-1"} pt-4`}>
+              {visit &&
               <a href={visit} target='_blank' className="bg-teal-500 hover:bg-teal-700 text-white font-semibold py-6 text-center">
-                  Code
-              </a>
-              <a href={source} target='_blank' className="bg-teal-500 hover:bg-teal-700 text-white font-semibold py-6 text-center">
-                  Source
-              </a>
+                <div className="flex justify-center items-center">
+                  <FaExternalLinkAlt className="mr-2" />
+                  <span>Visiter</span>
+                </div>
+              </a>}
+              {source && <a href={source} target='_blank' className="bg-teal-500 hover:bg-teal-700 text-white font-semibold py-6 text-center">
+                <div className="flex justify-center items-center">
+                  <FaCode className="mr-2 text-xl" />
+                  <span>Voir le code</span>
+                </div>
+              </a>}
             </div>
           </motion.div>
         </motion.div>
