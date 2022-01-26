@@ -7,11 +7,11 @@ export interface IProject {
     tags:        string[];
     source:      string;
     visit:       string;
-    id:          number;
+    id:          string;
 }
 
-const ProjectCard = ({project}: {project:IProject}) => {
-    const {title, image, description, tags, source, visit, id} = project
+const ProjectCard = ({project, index}: {project:IProject, index:number}) => {
+    const {title, image, description, tags, source, visit} = project
 
     const cardVariants: Variants = {
         offscreen: {
@@ -23,7 +23,7 @@ const ProjectCard = ({project}: {project:IProject}) => {
             type: "spring",
             bounce: 0.4,
             duration: 0.8,
-            delay: id * 0.1
+            delay: index * 0.1
           }
         }
     };

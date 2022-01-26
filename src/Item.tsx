@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { items } from "./data";
+import { projects } from "../constants/projects"
 
 export function Item({ id }:any) {
-  const { category, title }:any = items.find((item:any) => item.id === id);
+  const { category, title, image, description }:any = projects.find((project:any) => project.id === id);
 
   return (
     <>
@@ -20,20 +20,20 @@ export function Item({ id }:any) {
       <div className="card-content-container open">
         <motion.div className="card-content" layoutId={`card-container-${id}`}>
           <motion.div
-            className="card-image-container"
+            className="relative mb-6 overflow-hidden shadow-md pb-[24rem] sm:pb-[30rem]"
             layoutId={`card-image-container-${id}`}
           >
-            <img className="card-image" src={`images/${id}.jpg`} alt="" />
+            <img className="absolute object-cover object-top w-full rounded-t-2xl shadow-lg h-[24rem] sm:h-[30rem]" src={image} alt={title} />
           </motion.div>
           <motion.div
-            className="title-container"
+            className="text-white absolute left-6 top-4 max-w-[300px]"
             layoutId={`title-container-${id}`}
           >
-            <span className="category">{category}</span>
-            <h2 className="text-white">{title}</h2>
+            <span className="">{category}</span>
+            <h2 className="">{title}</h2>
           </motion.div>
-          <motion.div className="text-white content-container" animate>
-              {`Ceci est la description de ${title}`}
+          <motion.div className="text-white my-5 mx-6" animate>
+              {description}
           </motion.div>
         </motion.div>
       </div>

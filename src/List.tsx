@@ -1,20 +1,20 @@
-import { items } from "./data";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { projects } from '../constants/projects'
 
-function Card({ id, title, category, theme }:any) {
+function Card({ id, title, category, image, theme }:any) {
   return (
-    <li className={`card ${theme}`}>
+    <li className="card h-[80vw] sm:h-[40vw] lg:h-[25vw]">
       <div className="card-content-container">
         <motion.div className="card-content" layoutId={`card-container-${id}`}>
           <motion.div
             className="card-image-container"
             layoutId={`card-image-container-${id}`}
           >
-            <img className="card-image" src={`../images/${id}.jpg`} alt="" />
+            <img className="card-image" src={image} alt={title} />
           </motion.div>
           <motion.div
-            className="title-container"
+            className="absolute left-6 top-4 max-w-[300px]"
             layoutId={`title-container-${id}`}
           >
             <span className="category">{category}</span>
@@ -29,10 +29,12 @@ function Card({ id, title, category, theme }:any) {
 
 export function List({ selectedId }:any) {
   return (
-    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
-      {items.map((card:any) => (
-        <Card key={card.id} {...card} isSelected={card.id === selectedId} />
-      ))}
-    </ul>
+    <section id="projets" className="mx-10 lg:mx-20 py-20">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
+        {projects.map((project:any) => (
+          <Card key={project.id} {...project} isSelected={project.id === selectedId} />
+        ))}
+      </ul>
+    </section>
   );
 }
