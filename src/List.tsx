@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projects } from '../constants/projects'
 
-function Card({ id, title, category, image, theme }:any) {
+function Card({ id, title, category, image }:any) {
   return (
-    <li className="card h-[80vw] sm:h-[40vw] lg:h-[25vw]">
+    <motion.li whileHover={{ scale: 1.03 }} className="card h-[80vw] sm:h-[40vw] lg:h-[25vw]">
       <div className="card-content-container">
         <motion.div className="card-content" layoutId={`card-container-${id}`}>
           <motion.div
@@ -23,7 +23,7 @@ function Card({ id, title, category, image, theme }:any) {
         </motion.div>
       </div>
       <Link to={id} className={`card-open-link`} />
-    </li>
+    </motion.li>
   );
 }
 
