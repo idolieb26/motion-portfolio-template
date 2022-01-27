@@ -18,7 +18,7 @@ const ProjectItem = ({ id }:{id:string}) => {
 
   const { category, title, image, date, description, tags, source, visit }:IProject = project
   const isSelected = true
-  const dismissDistance = 150;
+  const dismissDistance = 100;
   const navigate = useNavigate();
   const y = useMotionValue(0);
   const cardRef = useRef(null);

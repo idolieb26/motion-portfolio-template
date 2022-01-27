@@ -1,6 +1,6 @@
 import { RefObject } from "react";
 import { useDomEvent, MotionValue } from "framer-motion";
-import { spring } from "popmotion";
+import { animate } from "popmotion";
 import { mix } from "@popmotion/popcorn";
 import { debounce } from "lodash";
 
@@ -20,9 +20,10 @@ function springTo(value: MotionValue, from: number, to: number) {
   if (value.isAnimating()) return;
 
   value.start(complete => {
-    const animation = spring({
+    const animation = animate({
       from,
       to,
+      type: "spring",
       velocity: value.getVelocity(),
       stiffness: 400,
       damping: 40
@@ -65,9 +66,9 @@ export function useWheelScroll(
   y: MotionValue<number>,
   constraints: Constraints | null,
   onWheelCallback: (e: WheelEvent) => void,
-  isActive: boolean
+  isActive: boolean | undefined
 ) {
-  const onWheel = (event: WheelEvent) => {
+  const onWheel = (event: any) => {
     event.preventDefault();
 
     const currentY = y.get();
@@ -108,5 +109,5 @@ export function useWheelScroll(
     onWheelCallback(event);
   };
 
-  useDomEvent(ref, "wheel", isActive && onWheel, { passive: false });
+  isActive && useDomEvent(ref, "wheel", onWheel, { passive: false });
 }
