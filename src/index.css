@@ -144,8 +144,8 @@ li {
   transform: translateX(-50%);
   width: 100%;
   background: rgba( 255, 255, 255, 0.25 );
-backdrop-filter: blur( 4px );
--webkit-backdrop-filter: blur( 4px );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
 }
 
 .overlay a {
