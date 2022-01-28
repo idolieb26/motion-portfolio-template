@@ -18,7 +18,7 @@ const elasticFactor = 0.2;
 
 function springTo(value: MotionValue, from: number, to: number) {
   if (value.isAnimating()) return;
-
+  
   value.start(complete => {
     const animation = animate({
       from,
@@ -26,12 +26,11 @@ function springTo(value: MotionValue, from: number, to: number) {
       type: "spring",
       velocity: value.getVelocity(),
       stiffness: 400,
-      damping: 40
-    }).start({
-      update: (v: number) => value.set(v),
-      complete
-    });
-
+      damping: 40,
+      onUpdate: (v: number) => value.set(v),
+      onComplete: complete
+    })
+    
     return () => animation.stop();
   });
 }
@@ -68,9 +67,8 @@ export function useWheelScroll(
   onWheelCallback: (e: WheelEvent) => void,
   isActive: boolean | undefined
 ) {
-  const onWheel = (event: any) => {
-    event.preventDefault();
 
+  const onWheel = (event: any) => {
     const currentY = y.get();
     let newY = currentY - event.deltaY;
     let startedAnimation = false;
@@ -109,5 +107,5 @@ export function useWheelScroll(
     onWheelCallback(event);
   };
 
-  isActive && useDomEvent(ref, "wheel", onWheel, { passive: false });
+  useDomEvent(ref, "wheel", onWheel, { passive: false });
 }

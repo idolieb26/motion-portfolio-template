@@ -29,13 +29,15 @@ const ProjectItem = ({ id }:{id:string}) => {
   }
 
   const containerRef = useRef(null);
-  useWheelScroll(
-    containerRef,
-    y,
-    constraints,
-    checkSwipeToDismiss,
-    isSelected
-  );
+  if(containerRef !== null) {
+    useWheelScroll(
+      containerRef,
+      y,
+      constraints,
+      checkSwipeToDismiss,
+      isSelected
+    );
+  }
   
   return (
     <div ref={containerRef}>
