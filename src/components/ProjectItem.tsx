@@ -21,11 +21,20 @@ const ProjectItem = ({ id }:{id:string}) => {
   const dismissDistance = 100;
   const navigate = useNavigate();
   const y = useMotionValue(0);
+  const zIndex = useMotionValue(isSelected ? 2 : 0);
   const cardRef = useRef(null);
   const constraints = useScrollConstraints(cardRef, isSelected);
   
   function checkSwipeToDismiss() {
     y.get() > dismissDistance && navigate("/");
+  }
+
+  function checkZIndex(latest:any) {
+    if (isSelected) {
+      zIndex.set(2);
+    } else if (!isSelected && latest.scaleX < 1.01) {
+      zIndex.set(0);
+    }
   }
 
   const containerRef = useRef(null);
@@ -54,11 +63,16 @@ const ProjectItem = ({ id }:{id:string}) => {
       <div className="card-content-container open">
         <motion.div 
           ref={cardRef}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: 0.30 } }}
+          transition={{ duration: 0.3, delay: 0.3 }}
+          className="card-content bg-white"
+          style={{ zIndex, y }}
           drag={isSelected ? "y" : false}
           dragConstraints={constraints}
           onDrag={checkSwipeToDismiss}
-          className="bg-white card-content" 
-          layoutId={`card-container-${id}`}
+          onUpdate={checkZIndex}
         >
           <motion.div
             className="relative overflow-hidden shadow-md pb-[24rem] sm:pb-[30rem] bg-black"
