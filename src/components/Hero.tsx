@@ -1,3 +1,8 @@
+import { OrbitControls } from "@react-three/drei";
+import { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import Mobile from "./Mobile";
+
 const Hero = () => {
     return (
         <section className='flex flex-row items-center justify-center my-10 h-screen'>
@@ -15,6 +20,13 @@ const Hero = () => {
                     </a>
                 </div>
             </div>
+            <Canvas>
+                <OrbitControls />
+                <ambientLight intensity={0.5} />
+                <Suspense fallback={null}>
+                    <Mobile />
+                </Suspense>
+            </Canvas>
         </section>
     )
 }
