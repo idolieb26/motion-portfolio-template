@@ -1,4 +1,4 @@
-import { OrbitControls } from "@react-three/drei";
+import { PresentationControls, ContactShadows } from "@react-three/drei";
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import Mobile from "./Mobile";
@@ -21,10 +21,18 @@ const Hero = () => {
                 </div>
             </div>
             <Canvas>
-                <OrbitControls />
                 <ambientLight intensity={0.5} />
                 <Suspense fallback={null}>
-                    <Mobile />
+                    <PresentationControls
+                        global
+                        zoom={0.8}
+                        rotation={[0, -Math.PI / 4, 0]}
+                        polar={[0, Math.PI / 4]}
+                        azimuth={[-Math.PI / 4, Math.PI / 4]}
+                    >
+                        <Mobile />
+                        <ContactShadows frames={10} position={[0, -1.05, 0]} scale={10} blur={2} far={10} />
+                    </PresentationControls>
                 </Suspense>
             </Canvas>
         </section>
