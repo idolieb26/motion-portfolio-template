@@ -6,6 +6,7 @@ import Mobile from "./Mobile";
 const Hero = () => {
     return (
         <section className='flex flex-row items-center justify-center my-10 h-screen'>
+            <div className="grid grid-cols-1 sm:grid-cols-2 h-full">
             <div className="">
                 <h1 className='text-4xl text-white'>
                     Bienvenue sur<br />
@@ -20,11 +21,11 @@ const Hero = () => {
                     </a>
                 </div>
             </div>
-            <Canvas>
+            <Canvas style={{touchAction: 'none'}}>
                 <ambientLight intensity={0.5} />
                 <Suspense fallback={null}>
                     <PresentationControls
-                        global
+                        global={false} 
                         zoom={0.8}
                         rotation={[0, -Math.PI / 4, 0]}
                         polar={[0, Math.PI / 4]}
@@ -35,6 +36,7 @@ const Hero = () => {
                     </PresentationControls>
                 </Suspense>
             </Canvas>
+            </div>
         </section>
     )
 }
