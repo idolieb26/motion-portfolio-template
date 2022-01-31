@@ -113,8 +113,8 @@
     "images" : [
         {
             "mimeType" : "image/jpeg",
-            "name" : "Splash Screen",
-            "uri" : "Splash%20Screen.jpg"
+            "name" : "MockupSite",
+            "uri" : "MockupSite.jpg"
         }
     ],
     "accessors" : [

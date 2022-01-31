@@ -25,7 +25,7 @@ export default function Model({ ...props }: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF('/Mobile.gltf') as GLTFResult
   return (
     <group ref={group} {...props} dispose={null}>
-      <group rotation={[0, 5.2, -Math.PI / 2]} scale={[1.91, 1, 1]}>
+      <group rotation={[0, 0, -Math.PI / 2]} scale={[1.91, 1, 1]}>
         <mesh castShadow receiveShadow geometry={nodes.Plane_1.geometry} material={materials['Material.002']} />
         <mesh castShadow receiveShadow geometry={nodes.Plane_2.geometry} material={materials['Material.001']} />
         <mesh castShadow receiveShadow geometry={nodes.Plane_3.geometry} material={materials['Material.003']} />
