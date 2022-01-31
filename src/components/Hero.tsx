@@ -1,4 +1,4 @@
-import { PresentationControls, ContactShadows } from "@react-three/drei";
+import { Loader, PresentationControls, ContactShadows } from "@react-three/drei";
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import Mobile from "./Mobile";
@@ -36,6 +36,7 @@ const Hero = () => {
                     </PresentationControls>
                 </Suspense>
             </Canvas>
+            <Loader />
             </div>
         </section>
     )
