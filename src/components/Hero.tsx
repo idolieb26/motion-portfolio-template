@@ -21,7 +21,7 @@ const HeroContent = () => (
 )
 
 const Phone = () => (
-    <Canvas style={{touchAction: 'none'}} className="h-20">
+    <Canvas style={{touchAction: 'none'}}>
         <ambientLight intensity={0.5} />
         <Suspense fallback={null}>
             <PresentationControls
@@ -41,7 +41,7 @@ const Phone = () => (
 const Hero = () => {
     return (
         <section className='flex flex-row items-center justify-center my-10 h-[75vh] sm:h-screen'>
-            <div className="hidden sm:grid grid-cols-2 h-full">
+            <div className="hidden sm:grid grid-cols-2 h-full w-[100vw] md:w-[90vw] lg:w-[75vw]">
                 <HeroContent />
                 <Phone />
             </div>
