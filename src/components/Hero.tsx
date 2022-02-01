@@ -4,16 +4,16 @@ import { Canvas } from "@react-three/fiber";
 import Mobile from "./Mobile";
 
 const HeroContent = () => (
-    <div className="flex flex-col justify-center">
-        <h1 className='text-4xl text-white'>
+    <div className="flex flex-col justify-center text-white">
+        <h1 className='text-4xl'>
             Bienvenue sur<br />
             mon portfolio
         </h1>
-        <div className='text-white'>
+        <div className="pt-2">
             Mon objectif est de vous rendre inoubliable !
         </div>
         <div className="my-8">
-            <a href="https://www.google.com" className="btngrad text-white px-8 py-4 my-4 rounded-full shadow-lg">
+            <a href="https://www.google.com" className="btngrad px-8 py-4 my-4 rounded-full shadow-lg">
                 Bouton
             </a>
         </div>
