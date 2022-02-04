@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "set NODE_OPTIONS=--max-old-space-size=16192 && tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
