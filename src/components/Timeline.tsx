@@ -20,11 +20,12 @@ const Timeline = () => {
         }
     `);
 
-    if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`;
+    if (loading) return <>Loading...</>;
+    if (error) return <>Error! {error.message}</>;
     let tim = data?.timelineEvents?.data
 
     console.log(tim)
+    
     return (
         <section id="apropos" className="relative z-0 mx-10 antialiased lg:mx-20">
             <hr />

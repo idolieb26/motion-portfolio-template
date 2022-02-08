@@ -65,8 +65,8 @@ const Projects = ({ selectedId }:{selectedId:string|undefined}) => {
     }
   `);
 
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
+  if (loading) return <>Loading...</>;
+  if (error) return <>Error! {error.message}</>;
   let projs = data?.projects?.data
 
   console.log(projs)
