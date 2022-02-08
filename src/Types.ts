@@ -1,6 +1,30 @@
 export interface IProject {
+    __typename?: string;
     id: number;
     attributes: IAttributes;
+    isSelected?: boolean;
+}
+
+export interface OldProj {
+    id: string, 
+    title: string, 
+    category: string, 
+    image: string
+    isSelected?: boolean;
+}
+
+export interface IProjectItem {
+    __typename?:  string;
+    id?: number;
+    title:       string;
+    slug:        string;
+    cover:       Cover;
+    date:        string;
+    category:    Category;
+    techs:       Tech[];
+    description: string;
+    source:      string;
+    url:         string;
     isSelected?: boolean;
 }
 

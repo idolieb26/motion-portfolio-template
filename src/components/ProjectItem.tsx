@@ -2,21 +2,54 @@ import { useRef } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { projects } from "../../constants/projects"
-import { IProject } from "../Types"
+import { IProjectItem } from '../Types';
 import { CgClose } from "react-icons/cg"
 import { FaExternalLinkAlt, FaCode } from "react-icons/fa"
 import { useScrollConstraints } from "../../utils/use-scroll-constraints";
 import { useWheelScroll } from "../../utils/use-wheel-scroll";
+import { gql, useQuery } from '@apollo/client';
 
-const ProjectItem = ({ id }:{id:string}) => {
-  const project = projects.find((project) => project.id === id);
-  if(!project) {
-    return (
-      <div>Erreur</div>
-    )
-  }
+const ProjectItem = ({ slug }:{slug:string}) => {
+  const { loading, error, data } = useQuery(gql`
+    query Project($slug: String!) {
+      project(where: {slug: $slug}) {
+        data {
+          id
+          attributes {
+            title
+            slug
+            cover {
+              data {
+                attributes {
+                    url
+                  }
+                }
+              }
+            date
+            category {
+              data {
+                attributes {
+                  Category
+                }
+              }
+            }
+            techs {
+              tech
+            }
+            description
+            source
+            url
+          }
+        }
+      }
+    }
+  `);
 
-  const { category, title, image, date, description, tags, source, visit }:IProject = project
+  if (loading) return <>Loading...</>;
+  if (error) return <>Error! {error.message}</>;
+  let project = data
+console.log(project)
+  const { title, cover, date, category, techs, description, source, url }:IProjectItem = project
   const isSelected = true
   const dismissDistance = 100;
   const navigate = useNavigate();
@@ -76,9 +109,9 @@ const ProjectItem = ({ id }:{id:string}) => {
         >
           <motion.div
             className="relative overflow-hidden shadow-md pb-[24rem] sm:pb-[30rem] bg-black"
-            layoutId={`card-image-container-${id}`}
+            layoutId={`card-image-container-${slug}`}
           >
-            <img className="absolute object-cover object-top w-full rounded-t-2xl shadow-lg h-[24rem] sm:h-[30rem]" src={image} alt={title} />
+            <img className="absolute object-cover object-top w-full rounded-t-2xl shadow-lg h-[24rem] sm:h-[30rem]" src={`https://admin.aurelientrouble.com${cover.data.attributes.url}`} alt={title} />
           </motion.div>
           <motion.div className="absolute top-4 right-4">
             <Link to="/">
@@ -87,7 +120,7 @@ const ProjectItem = ({ id }:{id:string}) => {
           </motion.div>
           <motion.div
             className=""
-            layoutId={`title-container-${id}`}
+            layoutId={`title-container-${slug}`}
           >
             <div className="flex justify-between px-6 py-2 text-white bg-cyan-900">
               <span className="font-semibold">{category}</span>
@@ -102,19 +135,19 @@ const ProjectItem = ({ id }:{id:string}) => {
           </motion.div>
           <hr />
           <motion.div>
-            <div className={`mx-6 pt-4 ${(!source && !visit) && "pb-6"}`}>
+            <div className={`mx-6 pt-4 ${(!source && !url) && "pb-6"}`}>
               <div className="flex font-semibold">Techs :</div>
               <div className=''>
-                {tags.map((tag:string, i:number) => (
+                {techs.map((tech:{tech:string}, i:number) => (
                   <span key={i}>
-                     { (i ? ', ' : '') + tag }
+                     { (i ? ', ' : '') + tech.tech }
                   </span>
                 ))}
               </div>
             </div>
-            {(visit || source) && <div className={`grid ${visit && source ? "grid-cols-2" : "grid-cols-1"} pt-4`}>
-              {visit &&
-              <a href={visit} target='_blank' className="py-6 font-semibold text-center text-white bg-teal-500 hover:bg-teal-700">
+            {(url || source) && <div className={`grid ${url && source ? "grid-cols-2" : "grid-cols-1"} pt-4`}>
+              {url &&
+              <a href={url} target='_blank' className="py-6 font-semibold text-center text-white bg-teal-500 hover:bg-teal-700">
                 <div className="flex items-center justify-center">
                   <FaExternalLinkAlt className="mr-2" />
                   <span>Visiter</span>

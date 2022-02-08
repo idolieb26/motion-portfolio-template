@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projects } from "../../constants/projects"
-import { IProject, IAttributes } from '../Types';
+import { IProject, IAttributes, IProjectItem } from '../Types';
 import { gql, useQuery } from '@apollo/client';
 
-function Card({ id, attributes }:IProject) {
-  const {title, slug, cover, date, category, techs, description, source, url}: IAttributes = attributes
+function Card({ title, slug, cover, date, category, techs, description, source, url }:IProjectItem) {
+
   return (
     <motion.li whileHover={{ scale: 1.03 }} className="card h-[80vw] sm:h-[40vw] lg:h-[25vw]">
-      <div className="card-content-container">
+      {title}
+{/*      <div className="card-content-container">
         <motion.div className="shadow-md card-content" layoutId={`card-container-${slug}`}>
           <motion.div
             className="card-image-container"
@@ -25,7 +26,7 @@ function Card({ id, attributes }:IProject) {
           </motion.div>
         </motion.div>
       </div>
-      <Link to={slug} className={`card-open-link`} />
+  <Link to={slug} className={`card-open-link`} />*/}
     </motion.li>
   );
 }
@@ -76,7 +77,7 @@ const Projects = ({ selectedId }:{selectedId:string|undefined}) => {
     <section id="projets" className="py-20 mx-10 lg:mx-20">
       <ul className="grid grid-cols-1 gap-8 pb-10 sm:grid-cols-2 lg:grid-cols-3">
         {projs.map((project:IProject) => (
-          <Card key={project.attributes.slug} {...project} isSelected={project.attributes.slug === selectedId} />
+          <Card key={project.attributes.slug} {...project.attributes} isSelected={project.attributes.slug === selectedId} />
         ))}
       </ul>
     </section>
