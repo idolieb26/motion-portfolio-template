@@ -8,8 +8,7 @@ function Card({ title, slug, cover, date, category, techs, description, source, 
 
   return (
     <motion.li whileHover={{ scale: 1.03 }} className="card h-[80vw] sm:h-[40vw] lg:h-[25vw]">
-      {title}
-{/*      <div className="card-content-container">
+      <div className="card-content-container">
         <motion.div className="shadow-md card-content" layoutId={`card-container-${slug}`}>
           <motion.div
             className="card-image-container"
@@ -21,12 +20,12 @@ function Card({ title, slug, cover, date, category, techs, description, source, 
             className="absolute text-white left-6 top-4 max-w-[300px]"
             layoutId={`title-container-${slug}`}
           >
-            <span className="category">{category}</span>
+            <span className="category">{category.data.attributes.Category}</span>
             <h2>{title}</h2>
           </motion.div>
         </motion.div>
       </div>
-  <Link to={slug} className={`card-open-link`} />*/}
+      <Link to={slug} className={`card-open-link`} />
     </motion.li>
   );
 }
