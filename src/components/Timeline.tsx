@@ -1,17 +1,40 @@
 import { TimeLineData } from '../../constants/timeline';
 import TimelineElement from './TimelineElement';
+import { gql, useQuery } from '@apollo/client';
 
 const Timeline = () => {
+    const { loading, error, data } = useQuery(gql`
+        query {
+            timelineEvents {
+                data {
+                    id
+                    attributes {
+                        title
+                        location
+                        date
+                        description
+                        icon
+                    }
+                }
+            }
+        }
+    `);
+
+    if (loading) return 'Loading...';
+    if (error) return `Error! ${error.message}`;
+    let tim = data?.timelineEvents?.data
+
+    console.log(tim)
     return (
-        <section id="apropos" className="mx-10 lg:mx-20 antialiased relative z-0">
+        <section id="apropos" className="relative z-0 mx-10 antialiased lg:mx-20">
             <hr />
             <div>
-                <h3 className="text-4xl text-white py-6">
+                <h3 className="py-6 text-4xl text-white">
                     A propos de moi
                 </h3>
-                <div className='relative container mx-auto px-6 my-6 flex flex-col space-y-8'>
+                <div className='container relative flex flex-col px-6 mx-auto my-6 space-y-8'>
                     <div 
-                        className="absolute z-0 w-2 h-full bg-white shadow-md left-17 inset-0 md:mx-auto md:left-0 md:right-0"
+                        className="absolute inset-0 z-0 w-2 h-full bg-white shadow-md left-17 md:mx-auto md:left-0 md:right-0"
                     ></div>
                     {TimeLineData.map(element => (
                         <TimelineElement key={element.id} element={element} />
