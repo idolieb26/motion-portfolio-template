@@ -35,14 +35,14 @@ const Projects = ({ selectedId }:{selectedId:string|undefined}) => {
 
   if (loading) return <>Loading...</>;
   if (error) return <>Error! {error.message}</>;
-  let projs = data?.projects?.data
+  let projects = data?.projects?.data
 
-  console.log(projs)
+  console.log(projects)
 
   return (
     <section id="projets" className="py-20 mx-10 lg:mx-20">
       <ul className="grid grid-cols-1 gap-8 pb-10 sm:grid-cols-2 lg:grid-cols-3">
-        {projs.map((project:IProject) => (
+        {projects.map((project:IProject) => (
           <Card key={project.attributes.slug} {...project.attributes} isSelected={project.attributes.slug === selectedId} />
         ))}
       </ul>
