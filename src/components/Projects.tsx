@@ -4,7 +4,7 @@ import { IProject, IProjectItem } from '../Types';
 import { useQuery } from '@apollo/client';
 import { GET_PROJECTS } from '../../utils/fetchData'
 
-function Card({ title, slug, cover, date, category, techs, description, source, url }:IProjectItem) {
+function Card({ title, slug, cover, category }:IProjectItem) {
 
   return (
     <motion.li whileHover={{ scale: 1.03 }} className="card h-[80vw] sm:h-[40vw] lg:h-[25vw]">

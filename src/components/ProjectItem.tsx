@@ -1,13 +1,12 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { projects } from '../../constants/projects';
 import { IProjectItem, IProject } from '../Types';
 import { CgClose } from "react-icons/cg"
 import { FaExternalLinkAlt, FaCode } from "react-icons/fa"
 import { useScrollConstraints } from "../../utils/use-scroll-constraints";
 import { useWheelScroll } from "../../utils/use-wheel-scroll";
-import { useQuery, useApolloClient } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { GET_PROJECTS } from '../../utils/fetchData'
 
 const ProjectItem = () => {
@@ -50,6 +49,7 @@ const ProjectItem = () => {
 
   let projects = data?.projects?.data
   if (!projects) return <>Loading...</>;
+
   const projectData = projects.find((proj:IProject) => `/${proj.attributes.slug}` === location.pathname)
   const project = projectData?.attributes
   if (!project) return <>Loading...</>;
