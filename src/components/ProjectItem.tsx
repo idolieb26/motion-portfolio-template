@@ -10,45 +10,20 @@ import { useWheelScroll } from "../../utils/use-wheel-scroll";
 import { gql, useQuery } from '@apollo/client';
 
 const ProjectItem = ({ slug }:{slug:string}) => {
-  const { loading, error, data } = useQuery(gql`
-    query Project($slug: String!) {
-      project(where: {slug: $slug}) {
-        data {
-          id
-          attributes {
-            title
-            slug
-            cover {
-              data {
-                attributes {
-                    url
-                  }
-                }
-              }
-            date
-            category {
-              data {
-                attributes {
-                  Category
-                }
-              }
-            }
-            techs {
-              tech
-            }
-            description
-            source
-            url
-          }
-        }
+  const { todo } = client.readQuery({
+  query: gql`
+    query ReadTodo($id: Int!) {
+      todo(id: $id) {
+        id
+        text
+        completed
       }
     }
-  `);
-
-  if (loading) return <>Loading...</>;
-  if (error) return <>Error! {error.message}</>;
-  let project = data
-console.log(project)
+  `,
+  variables: {
+    id: 5,
+  },
+});
   const { title, cover, date, category, techs, description, source, url }:IProjectItem = project
   const isSelected = true
   const dismissDistance = 100;

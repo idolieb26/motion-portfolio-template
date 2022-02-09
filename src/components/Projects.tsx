@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { projects } from "../../constants/projects"
-import { IProject, IAttributes, IProjectItem } from '../Types';
-import { gql, useQuery } from '@apollo/client';
+import { IProject, IProjectItem } from '../Types';
+import { useQuery } from '@apollo/client';
+import { GET_PROJECTS } from '../../utils/fetchData'
 
 function Card({ title, slug, cover, date, category, techs, description, source, url }:IProjectItem) {
 
@@ -31,40 +31,7 @@ function Card({ title, slug, cover, date, category, techs, description, source, 
 }
 
 const Projects = ({ selectedId }:{selectedId:string|undefined}) => {
-  const { loading, error, data } = useQuery(gql`
-    query {
-      projects {
-        data {
-          id
-          attributes {
-            title
-            slug
-            cover {
-              data {
-                attributes {
-                    url
-                  }
-                }
-              }
-            date
-            category {
-              data {
-                attributes {
-                  Category
-                }
-              }
-            }
-            techs {
-              tech
-            }
-            description
-            source
-            url
-          }
-        }
-      }
-    }
-  `);
+  const { loading, error, data } = useQuery(GET_PROJECTS);
 
   if (loading) return <>Loading...</>;
   if (error) return <>Error! {error.message}</>;

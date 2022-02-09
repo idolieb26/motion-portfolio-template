@@ -1,24 +1,10 @@
 import { TimeLineData } from '../../constants/timeline';
 import TimelineElement from './TimelineElement';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import { GET_TIMELINE } from '../../utils/fetchData'
 
 const Timeline = () => {
-    const { loading, error, data } = useQuery(gql`
-        query {
-            timelineEvents {
-                data {
-                    id
-                    attributes {
-                        title
-                        location
-                        date
-                        description
-                        icon
-                    }
-                }
-            }
-        }
-    `);
+    const { loading, error, data } = useQuery(GET_TIMELINE);
 
     if (loading) return <>Loading...</>;
     if (error) return <>Error! {error.message}</>;
