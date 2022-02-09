@@ -1,8 +1,8 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { projects } from '../../constants/projects';
-import { IProjectItem } from '../Types';
+import { IProjectItem, IProject } from '../Types';
 import { CgClose } from "react-icons/cg"
 import { FaExternalLinkAlt, FaCode } from "react-icons/fa"
 import { useScrollConstraints } from "../../utils/use-scroll-constraints";
@@ -10,26 +10,19 @@ import { useWheelScroll } from "../../utils/use-wheel-scroll";
 import { useQuery, useApolloClient } from '@apollo/client';
 import { GET_PROJECTS } from '../../utils/fetchData'
 
-const ProjectItem = ({ slug }:{slug:string}) => {
-  const [projects, setProjects] = useState<any>();
-  const client = useApolloClient();
+const ProjectItem = () => {
+  let location = useLocation();
+  const { loading, error, data } = useQuery(GET_PROJECTS);
 
-  let projectList
+  if (loading) return <>Loading...</>;
+  if (error) return <>Error! {error.message}</>;
 
-  projectList = client.readQuery({
-    query: GET_PROJECTS
-  });
-
-  if(!projectList) {
-    console.log("Pas de cache")
-    const { data } = useQuery(GET_PROJECTS);
-      if(data) {
-        projectList = data
-      }
-  }
+  let projects = data?.projects?.data
+  const project = projects.find((proj:IProject) => `/${proj.attributes.slug}` === location.pathname)
   
-  //let projs = data?.projects?.data
-  console.log(projectList)
+  const { title, slug, cover, date, category, techs, description, source, url }:IProjectItem = project.attributes
+  console.log(slug)
+  
   const isSelected = true
   const dismissDistance = 100;
   const navigate = useNavigate();
