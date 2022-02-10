@@ -5,14 +5,6 @@ export interface IProject {
     isSelected?: boolean;
 }
 
-export interface OldProj {
-    id: string, 
-    title: string, 
-    category: string, 
-    image: string
-    isSelected?: boolean;
-}
-
 export interface IProjectItem {
     __typename?:  string;
     id?: number;

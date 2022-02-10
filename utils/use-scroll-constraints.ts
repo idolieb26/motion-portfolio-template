@@ -16,8 +16,8 @@ export function useScrollConstraints(ref:any, measureConstraints: boolean) {
 
   useEffect(() => {
     if (!measureConstraints) return;
-
     const element = ref.current;
+    if(!element) return;
     const viewportHeight = window.innerHeight;
     const contentTop = element.offsetTop;
     const contentHeight = element.offsetHeight;

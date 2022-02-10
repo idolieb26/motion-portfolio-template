@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useMotionValue } from "framer-motion";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IProjectItem, IProject } from '../Types';
 import { CgClose } from "react-icons/cg"
 import { FaExternalLinkAlt, FaCode } from "react-icons/fa"
@@ -41,7 +41,6 @@ const ProjectItem = () => {
     );
   }
   
-  let location = useLocation();
   const { loading, error, data } = useQuery(GET_PROJECTS);
 
   if (loading) return <>Loading...</>;
