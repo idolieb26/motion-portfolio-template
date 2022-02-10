@@ -17,7 +17,7 @@ const Index = () => {
             <Technologies />
             <Timeline />
             <AnimatePresence>
-                {id && imageHasLoaded && <ProjectItem id={id} key="item" />}
+                {id && imageHasLoaded && <ProjectItem {...id} key="item" />}
             </AnimatePresence>
         </>
     )
