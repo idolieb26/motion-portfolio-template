@@ -37,8 +37,6 @@ const Projects = ({ selectedId }:{selectedId:string|undefined}) => {
   if (error) return <>Error! {error.message}</>;
   let projects = data?.projects?.data
 
-  console.log(projects)
-
   return (
     <section id="projets" className="py-20 mx-10 lg:mx-20">
       <ul className="grid grid-cols-1 gap-8 pb-10 sm:grid-cols-2 lg:grid-cols-3">
