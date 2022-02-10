@@ -68,13 +68,17 @@ export interface Tech {
     tech:       string;
 }
 
-
 export interface ITimeElement {
-    id:          number;
+    __typename: string;
+    id:         number;
+    attributes: ITimeAttributes;
+}
+
+export interface ITimeAttributes {
+    __typename:  string;
     title:       string;
     location:    string;
-    description: string;
-    buttonText:  string;
     date:        string;
+    description: string;
     icon:        string;
 }
