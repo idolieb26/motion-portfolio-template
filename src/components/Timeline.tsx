@@ -3,7 +3,6 @@ import { useQuery } from '@apollo/client';
 import { GET_TIMELINE } from '../../utils/fetchData'
 import { ITimeElement } from '../Types';
 
-
 const Timeline = () => {
     const { loading, error, data } = useQuery(GET_TIMELINE);
 
