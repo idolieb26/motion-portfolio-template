@@ -17,11 +17,11 @@ function Card({ title, slug, cover, category }:IProjectItem) {
             <img className="card-image" src={`https://admin.aurelientrouble.com${cover.data.attributes.url}`} alt={title} />
           </motion.div>
           <motion.div
-            className="absolute text-white left-6 top-4 max-w-[300px]"
+            className="absolute left-6 top-4 max-w-[300px]"
             layoutId={`title-container-${slug}`}
           >
-            <span className="category">{category.data.attributes.Category}</span>
-            <h2>{title}</h2>
+            <span className="uppercase">{category.data.attributes.Category}</span>
+            <h2 className=" font-bold">{title}</h2>
           </motion.div>
         </motion.div>
       </div>
@@ -40,7 +40,7 @@ const Projects = ({ selectedId }:{selectedId:string|undefined}) => {
   return (
     <section id="projets" className="py-20 mx-10 lg:mx-20">
       <ul className="grid grid-cols-1 gap-8 pb-10 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project:IProject) => (
+        {[...projects].reverse().map((project:IProject) => (
           <Card key={project.attributes.slug} {...project.attributes} isSelected={project.attributes.slug === selectedId} />
         ))}
       </ul>
