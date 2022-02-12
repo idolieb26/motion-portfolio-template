@@ -103,7 +103,7 @@ const ProjectItem = () => {
               <h2>{title}</h2>
             </div>
           </motion.div>
-          <motion.div className="mx-6 my-5" animate>
+          <motion.div className="mx-6 my-5 linebreak" animate>
             {description}
           </motion.div>
           <hr />
