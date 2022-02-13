@@ -8,7 +8,7 @@ export const GET_PROJECTS = gql`
                 attributes {
                     title
                     slug
-                    cover {
+                    images {
                         data {
                             attributes {
                                 url

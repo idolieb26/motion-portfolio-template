@@ -4,8 +4,8 @@ import { IProject, IProjectItem } from '../Types';
 import { useQuery } from '@apollo/client';
 import { GET_PROJECTS } from '../../utils/fetchData'
 
-function Card({ title, slug, cover, category }:IProjectItem) {
-
+function Card({ title, slug, images, category }:IProjectItem) {
+  const cover = [...images?.data].reverse();
   return (
     <motion.li whileHover={{ scale: 1.03 }} className="card h-[80vw] sm:h-[40vw] lg:h-[25vw]">
       <div className="card-content-container">
@@ -14,7 +14,7 @@ function Card({ title, slug, cover, category }:IProjectItem) {
             className="card-image-container"
             layoutId={`card-image-container-${slug}`}
           >
-            <img className="card-image" src={`https://admin.aurelientrouble.com${cover.data.attributes.url}`} alt={title} />
+            <img className="card-image" src={`https://admin.aurelientrouble.com${cover[0].attributes.url}`} alt={title} />
           </motion.div>
           <motion.div
             className="absolute left-6 top-4 max-w-[300px]"

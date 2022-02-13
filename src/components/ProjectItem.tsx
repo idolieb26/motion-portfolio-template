@@ -52,7 +52,7 @@ const ProjectItem = () => {
   const projectData = projects.find((proj:IProject) => `/${proj.attributes.slug}` === location.pathname)
   const project = projectData?.attributes
   if (!project) return <>Loading...</>;
-  const { title, slug, cover, date, category, techs, description, source, url }:IProjectItem = project
+  const { title, slug, images, date, category, techs, description, source, url }:IProjectItem = project
   
   return (
     <div ref={containerRef}>
@@ -84,7 +84,7 @@ const ProjectItem = () => {
             className="relative overflow-hidden shadow-md pb-[24rem] sm:pb-[30rem] bg-black"
             layoutId={`card-image-container-${slug}`}
           >
-            <img className="absolute object-cover object-top w-full rounded-t-2xl shadow-lg h-[24rem] sm:h-[30rem]" src={`https://admin.aurelientrouble.com${cover.data.attributes.url}`} alt={title} />
+            <img className="absolute object-cover object-top w-full rounded-t-2xl shadow-lg h-[24rem] sm:h-[30rem]" src={`https://admin.aurelientrouble.com${images.data[0].attributes.url}`} alt={title} />
           </motion.div>
           <motion.div className="absolute top-4 right-4">
             <Link to="/">

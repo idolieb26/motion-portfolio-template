@@ -10,7 +10,7 @@ export interface IProjectItem {
     id?: number;
     title:       string;
     slug:        string;
-    cover:       Cover;
+    images:       Cover;
     date:        string;
     category:    Category;
     techs:       Tech[];
@@ -24,7 +24,7 @@ export interface IAttributes {
     __typename:  string;
     title:       string;
     slug:        string;
-    cover:       Cover;
+    images:       Cover;
     date:        string;
     category:    Category;
     techs:       Tech[];
@@ -50,7 +50,7 @@ export interface PurpleAttributes {
 
 export interface Cover {
     __typename: string;
-    data:       CoverData;
+    data:       CoverData[];
 }
 
 export interface CoverData {
