@@ -119,17 +119,17 @@ const ProjectItem = () => {
               </div>
             </div>
             {(url || source) && <div className={`grid ${url && source ? "grid-cols-2" : "grid-cols-1"} pt-4`}>
+              {source && <a href={source} target='_blank' className="py-6 font-semibold text-center text-white bg-teal-500 hover:bg-teal-700">
+                <div className="flex items-center justify-center">
+                  <FaCode className="mr-2 text-xl" />
+                  <span>Voir le code</span>
+                </div>
+              </a>}
               {url &&
               <a href={url} target='_blank' className="py-6 font-semibold text-center text-white bg-teal-500 hover:bg-teal-700">
                 <div className="flex items-center justify-center">
                   <FaExternalLinkAlt className="mr-2" />
                   <span>Visiter</span>
-                </div>
-              </a>}
-              {source && <a href={source} target='_blank' className="py-6 font-semibold text-center text-white bg-teal-500 hover:bg-teal-700">
-                <div className="flex items-center justify-center">
-                  <FaCode className="mr-2 text-xl" />
-                  <span>Voir le code</span>
                 </div>
               </a>}
             </div>}
