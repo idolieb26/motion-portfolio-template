@@ -8,7 +8,7 @@ import { useScrollConstraints } from "../../utils/use-scroll-constraints";
 import { useWheelScroll } from "../../utils/use-wheel-scroll";
 import { useQuery } from '@apollo/client';
 import { GET_PROJECTS } from '../../utils/fetchData'
-import {Example} from "./Carousel";
+import Carousel from "./Carousel";
 
 const ProjectItem = () => {
   const isSelected = true
@@ -87,7 +87,7 @@ const ProjectItem = () => {
             layoutId={`card-image-container-${slug}`}
           >
             {covers.length > 1 ?
-              <Example covers={covers} />
+              <Carousel covers={covers} />
             :
               <img className="absolute object-cover object-top w-full rounded-t-2xl shadow-lg h-[24rem] sm:h-[30rem]" src={`https://admin.aurelientrouble.com${covers[0].attributes.url}`} alt={title} />
             }
