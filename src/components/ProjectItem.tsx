@@ -83,14 +83,10 @@ const ProjectItem = () => {
           onUpdate={checkZIndex}
         >
           <motion.div
-            className={`relative overflow-hidden shadow-md ${covers.length === 1 && "pb-[24rem] sm:pb-[30rem]"} pb-0 bg-black`}
+            className={`relative overflow-hidden shadow-md bg-black`}
             layoutId={`card-image-container-${slug}`}
           >
-            {covers.length > 1 ?
-              <Carousel covers={covers} />
-            :
-              <img className="absolute object-cover object-top w-full rounded-t-2xl shadow-lg h-[24rem] sm:h-[30rem]" src={`https://admin.aurelientrouble.com${covers[0].attributes.url}`} alt={title} />
-            }
+            <Carousel covers={covers} />
           </motion.div>
           <motion.div className="absolute top-4 right-4">
             <Link to="/">
