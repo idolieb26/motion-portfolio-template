@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
@@ -35,14 +34,14 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
 };
 
-export const Example = ({slides}:any) => {
+export const Example = ({covers}:any) => {
   const [[page, direction], setPage] = useState([0, 0]);
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
   // then wrap that within 0-2 to find our image ID in the array below. By passing an
   // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
   // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
-  const imageIndex = wrap(0, slides ? 0 : slides.length, page);
+  const imageIndex = wrap(0, covers.length, page);
 
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, newDirection]);
@@ -53,7 +52,7 @@ export const Example = ({slides}:any) => {
       <AnimatePresence initial={false} custom={direction}>
         <motion.img
           key={page}
-          src={`https://admin.aurelientrouble.com${slides[imageIndex].attributes.url}`}
+          src={`https://admin.aurelientrouble.com${covers[imageIndex].attributes.url}`}
           custom={direction}
           variants={variants}
           initial="enter"

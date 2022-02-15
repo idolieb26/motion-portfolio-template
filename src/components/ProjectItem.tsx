@@ -8,6 +8,7 @@ import { useScrollConstraints } from "../../utils/use-scroll-constraints";
 import { useWheelScroll } from "../../utils/use-wheel-scroll";
 import { useQuery } from '@apollo/client';
 import { GET_PROJECTS } from '../../utils/fetchData'
+import {Example} from "./Carousel";
 
 const ProjectItem = () => {
   const isSelected = true
@@ -54,6 +55,7 @@ const ProjectItem = () => {
   if (!project) return <>Loading...</>;
   const { title, slug, images, date, category, techs, description, source, url }:IProjectItem = project
   const covers = [...images?.data].reverse();
+  
   return (
     <div ref={containerRef}>
       <motion.div
@@ -81,11 +83,11 @@ const ProjectItem = () => {
           onUpdate={checkZIndex}
         >
           <motion.div
-            className="relative overflow-hidden shadow-md pb-[24rem] sm:pb-[30rem] bg-black"
+            className={`relative overflow-hidden shadow-md ${covers.length === 1 && "pb-[24rem] sm:pb-[30rem]"} pb-0 bg-black`}
             layoutId={`card-image-container-${slug}`}
           >
             {covers.length > 1 ?
-              <img className="absolute object-cover object-top w-full rounded-t-2xl shadow-lg h-[24rem] sm:h-[30rem]" src={`https://admin.aurelientrouble.com${covers[1].attributes.url}`} alt={title} />
+              <Example covers={covers} />
             :
               <img className="absolute object-cover object-top w-full rounded-t-2xl shadow-lg h-[24rem] sm:h-[30rem]" src={`https://admin.aurelientrouble.com${covers[0].attributes.url}`} alt={title} />
             }
