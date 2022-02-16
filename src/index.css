@@ -211,10 +211,10 @@ li {
   }
 }  
 
-// Carousel
+/* Carousel */
 .carousel-container {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;
   position: relative;
   display: flex;
   justify-content: center;
@@ -229,7 +229,7 @@ li {
   border-radius: 30px;
   width: 40px;
   height: 40px;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   user-select: none;
@@ -237,6 +237,10 @@ li {
   font-weight: bold;
   font-size: 18px;
   z-index: 2;
+}
+
+.carousel-container:hover > .next, .carousel-container:hover > .prev {
+  display: flex;
 }
 
 .next {

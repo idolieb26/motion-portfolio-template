@@ -86,7 +86,7 @@ const ProjectItem = () => {
             className={`relative overflow-hidden shadow-md bg-black`}
             layoutId={`card-image-container-${slug}`}
           >
-            <Carousel covers={covers} />
+            <Carousel covers={covers} title={title} />
           </motion.div>
           <motion.div className="absolute top-4 right-4">
             <Link to="/">
