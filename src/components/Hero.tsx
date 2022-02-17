@@ -39,7 +39,7 @@ const Phone = () => (
 
 const Hero = () => {
     return (
-        <section className='flex flex-row items-center justify-center my-10 h-[75vh] sm:h-[80vh]'>
+        <section className='flex flex-row items-center justify-center m-10 h-[75vh] sm:h-[80vh]'>
             <div className="hidden sm:grid grid-cols-2 h-full w-[100vw] md:w-[90vw] lg:w-[75vw]">
                 <HeroContent />
                 <Phone />

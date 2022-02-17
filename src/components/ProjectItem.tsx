@@ -68,7 +68,7 @@ const ProjectItem = () => {
       >
         <Link to="/" />
       </motion.div>
-      <div className="card-content-container open">
+      <div className="card-content-container open py-[5vw]">
         <motion.div 
           ref={cardRef}
           initial={{ opacity: 0 }}

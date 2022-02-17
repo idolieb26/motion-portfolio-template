@@ -4,7 +4,7 @@ import Header from './Header';
 
 const Layout = ({children}: {children: React.ReactNode}) => {
     return (
-        <div className=''>
+        <div className='overflow-x-hidden'>
             <Header />
             {children}
             <Footer />
