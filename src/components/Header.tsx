@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { HiMenuAlt4 } from 'react-icons/hi'
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin, AiOutlineClose } from 'react-icons/ai'
 import { DiCssdeck } from 'react-icons/di'
+import logo from "../logo.svg"
 
 const Header = () => {
     const [toggleMenu, setToggleMenu] = useState(false)
@@ -11,8 +12,7 @@ const Header = () => {
             <div className="w-full flex justify-between items-center text-white text-2xl px-8 py-5">
                 <a href="/#">
                     <div className="flex items-center cursor-pointer">
-                        <DiCssdeck />
-                        <span className='ml-2'>Portfolio</span>
+                        <img src="AT1-W.svg" alt="AT Logo" className="w-60" />
                     </div>
                 </a>
                 <div className='md:flex hidden'>
