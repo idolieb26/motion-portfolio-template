@@ -183,7 +183,7 @@ li {
 
 .caption-proj {
   color:#fff;
-  text-shadow: 1px 1px #000;
+  filter: drop-shadow(1px 1px 2px rgb(0 0 0 / 0.5));
 }
 
 @media only screen and (max-width: 800px) {

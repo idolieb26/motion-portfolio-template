@@ -98,7 +98,7 @@ const ProjectItem = () => {
           </motion.div>
           <motion.div className="absolute top-4 right-4">
             <Link to="/">
-              <CgClose className="text-3xl text-white" />
+              <CgClose className="text-3xl caption-proj" />
             </Link>
           </motion.div>
           <motion.div
