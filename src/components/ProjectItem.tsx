@@ -11,6 +11,7 @@ import { GET_PROJECTS } from '../../utils/fetchData'
 import Carousel from "./Carousel";
 
 const ProjectItem = () => {
+  const isClosed = useRef(false)
   const isSelected = true
   const dismissDistance = 100;
   const navigate = useNavigate();
@@ -20,9 +21,15 @@ const ProjectItem = () => {
   const constraints = useScrollConstraints(cardRef, isSelected);
   
   function checkSwipeToDismiss() {
-    y.get() > dismissDistance && navigate("/");
+    //Preventing infinite loop with isClosed check
+    if(y.get() > dismissDistance && isClosed.current === false) {
+      isClosed.current = true;
+      navigate("/")
+    };
   }
 
+  console.log(isClosed.current)
+  
   function checkZIndex(latest:any) {
     if (isSelected) {
       zIndex.set(2);
@@ -32,6 +39,7 @@ const ProjectItem = () => {
   }
 
   const containerRef = useRef(null);
+
   if(containerRef !== null) {
     useWheelScroll(
       containerRef,

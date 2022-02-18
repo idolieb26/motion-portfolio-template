@@ -1,6 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
+
+const useIsMounted = () => {
+    const isMounted = useRef(true)
+    
+    useEffect(
+      () => () => {
+        isMounted.current = false
+      },
+      []
+    )
+    
+    return isMounted
+}
 
 const variants = {
   enter: (direction: number) => {
@@ -21,17 +34,20 @@ const variants = {
   }
 };
 
- const swipeConfidenceThreshold = 2000;
- const swipePower = (offset:number, velocity:number) => {
+const swipeConfidenceThreshold = 2000;
+const swipePower = (offset:number, velocity:number) => {
    return Math.abs(offset) * velocity;
- };
+};
 
 const Carousel = ({covers}:any) => {
+    const isMounted = useIsMounted()
     const [[page, direction], setPage] = useState([0, 0]);
     const imageIndex = wrap(0, covers.length, page);
 
     const paginate = (newDirection: number) => {
-        setPage([page + newDirection, newDirection]);
+        if(isMounted.current) {
+            setPage([page + newDirection, newDirection]);
+        }
     };
 
     return (
