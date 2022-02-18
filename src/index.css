@@ -181,6 +181,11 @@ li {
   width: 90vw;
 }
 
+.caption-proj {
+  color:#fff;
+  text-shadow: 1px 1px #000;
+}
+
 @media only screen and (max-width: 800px) {
   .card {
     flex: 0 0 50%;

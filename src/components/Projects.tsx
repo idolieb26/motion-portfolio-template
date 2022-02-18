@@ -17,7 +17,7 @@ function Card({ title, slug, images, category }:IProjectItem) {
             <img className="card-image" src={`https://admin.aurelientrouble.com${cover[0].attributes.url}`} alt={title} />
           </motion.div>
           <motion.div
-            className="absolute left-6 top-4 max-w-[300px]"
+            className="absolute left-6 top-4 max-w-[300px] caption-proj"
             layoutId={`title-container-${slug}`}
           >
             <span className="uppercase">{category.data.attributes.Category}</span>
