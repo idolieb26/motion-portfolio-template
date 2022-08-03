@@ -20,7 +20,7 @@ const Contact = () => {
         } else {
             mailSubject = topic
         }
-        const messageContent = message.split(/\r?\n/)
+
         fetch('https://atmailer.herokuapp.com/send', {
             method: 'POST',
             headers: {
@@ -32,7 +32,7 @@ const Contact = () => {
                 email: email,
                 topic: topic,
                 subject: mailSubject,
-                message: messageContent
+                message: message
             })
         }).then(res => {
             console.log('Response received')
