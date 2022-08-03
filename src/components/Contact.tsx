@@ -66,7 +66,7 @@ const Contact = () => {
     const Dropdown = ({options, value, onChange}:any) => {
         return (
             <select
-                className={`w-full px-4 py-2 ${!value ? "text-gray-500" : "text-gray-900"} font-medium bg-white border rounded-lg appearance-none focus:outline-none focus:shadow-outline`}
+                className={`${!value ? "text-gray-500" : "text-gray-900"} bg-gray-50 border border-gray-300 font-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 pr-2`}
                 value={value}
                 onChange={e => onChange(e.target.value)}
             >
@@ -125,7 +125,7 @@ const Contact = () => {
                                         <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
                                         <span className="sr-only">Check icon</span>
                                     </div>
-                                    <div className="ml-3 text-sm font-normal">Votre message a bien été envoyé. J'y répondrai dès que possible. Merci pour l'attentions que vous me portez.</div>
+                                    <div className="ml-3 text-sm font-normal mr-2">Votre message a bien été envoyé. J'y répondrai dès que possible. Merci pour l'attentions que vous me portez.</div>
                                     <button onClick={() => setIsSubmitted(false)} type="button" className="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
                                         <span className="sr-only">Close</span>
                                         <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
@@ -139,7 +139,7 @@ const Contact = () => {
                                         <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                         <span className="sr-only">Error icon</span>
                                     </div>
-                                    <div className="ml-3 text-sm font-normal">Une erreur s'est produite, merci de vérifier votre connexion ainsi que les éléments du formulaire et de réessayer...</div>
+                                    <div className="ml-3 text-sm font-normal mr-2">Une erreur s'est produite, merci de vérifier votre connexion ainsi que les éléments du formulaire et de réessayer...</div>
                                     <button onClick={() => setIsError(false)} type="button" className="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-danger" aria-label="Close">
                                         <span className="sr-only">Close</span>
                                         <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
@@ -147,7 +147,7 @@ const Contact = () => {
                                 </div>
                             }
                             <div>
-                                <button type="submit" className={`text-white ${(!isError && !isSubmitted) && "bg-blue-700"} ${isError && "bg-red-500"} ${isSubmitted && "bg-green-500"} hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center`} disabled={isSending || isSubmitted}>
+                                <button type="submit" className={`text-white ${isError && "bg-red-500"} ${isSubmitted && "bg-green-500"} ${(!isError && !isSubmitted) && "bg-blue-700"} hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center`} disabled={isSending || isSubmitted}>
                                     {isSending ? 
                                         <>
                                             <svg aria-hidden="true" role="status" className="inline mr-3 w-4 h-4 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
