@@ -6,7 +6,7 @@ const Contact = () => {
     const [email, setEmail] = useState<string>("")
     const [topic, setTopic] = useState<string>("")
     const [subject, setSubject] = useState<string>("")
-    const [message, setMessage] = useState<string>("")
+    const [message, setMessage] = useState<string>(``)
     const [isSending, setIsSending] = useState<boolean>(false)
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false)
     const [isError, setIsError] = useState<boolean>(false)
@@ -78,7 +78,6 @@ const Contact = () => {
             </select>
         )
     }
-
 
     return (
         <section id="contact" className="relative z-0 mx-10 antialiased lg:mx-20">
