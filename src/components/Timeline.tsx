@@ -10,8 +10,6 @@ const Timeline = () => {
     if (error) return <>Error! {error.message}</>;
     let TimeLineData = data?.timelineEventCollection?.items
 
-    console.log("Timeline data: ", data)
-    
     return (
         <section id="apropos" className="relative z-0 mx-10 antialiased lg:mx-20">
             <hr />

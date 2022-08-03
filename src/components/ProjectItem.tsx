@@ -29,8 +29,6 @@ const ProjectItem = () => {
       navigate("/")
     };
   }
-
-  console.log("Is closed ? ", isClosed.current)
   
   function checkZIndex(latest:any) {
     if (isSelected) {

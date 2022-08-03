@@ -6,7 +6,7 @@ import { GET_PROJECTS_FR } from '../../utils/fetchData'
 
 function Card({ title, slug, imagesCollection, category, isSelected }:IProject) {
   const cover = [...imagesCollection?.items]
-  console.log("Is selected : ", isSelected)
+
   return (
     <motion.li whileHover={{ scale: 1.03 }} className="card h-[80vw] sm:h-[40vw] lg:h-[25vw]">
       <div className="card-content-container">
@@ -37,7 +37,7 @@ const Projects = ({ selectedId }:{selectedId:string|undefined}) => {
   if (loading) return <>Loading...</>;
   if (error) return <>Error! {error.message}</>;
   let projects = data?.projectsCollection?.items
-  console.log("Selected project id : ", selectedId)
+
   return (
     <section id="projets" className="py-20 mx-10 lg:mx-20">
       <ul className="grid grid-cols-1 gap-8 pb-10 sm:grid-cols-2 lg:grid-cols-3">
