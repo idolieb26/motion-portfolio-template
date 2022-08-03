@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.8",
+    "@contentful/rich-text-react-renderer": "^15.12.1",
     "@react-three/drei": "^8.8.0",
     "@react-three/fiber": "^7.0.26",
     "@types/three": "^0.137.0",

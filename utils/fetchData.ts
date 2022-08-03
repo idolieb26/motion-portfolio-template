@@ -1,51 +1,49 @@
 import { gql } from '@apollo/client';
 
-export const GET_PROJECTS = gql`
-    query GetProjects {
-        projects {
-            data {
+export const GET_PROJECTS_FR = gql`
+    query GetProj {
+        projectsCollection(limit:30) {
+            items {
+                title(locale: "fr")
+                slug(locale: "fr")
                 id
-                attributes {
-                    title
-                    slug
-                    images {
-                        data {
-                            attributes {
-                                url
-                                }
-                            }
-                        }
-                    date
-                    category {
-                        data {
-                            attributes {
-                                Category
-                            }
-                        }
+                imagesCollection(limit:10) {
+                    items {
+                        url
                     }
-                    techs {
-                        tech
-                    }
-                    description
-                    source
-                    url
                 }
+                date(locale: "fr")
+                category {
+                    name
+                }
+                techsCollection(limit:50) {
+                    items {
+                        name
+                    }
+                }
+                description(locale: "fr") {
+                    json
+                }
+                source
+                url
             }
         }
     }
 `;
 
-export const GET_TIMELINE = gql`
+export const GET_TIMELINE_FR = gql`
     query GetTimeLine {
-        timelineEvents {
-            data {
+        timelineEventCollection(limit:30) {
+            items {
                 id
-                attributes {
-                    title
-                    location
-                    date
-                    description
-                    icon
+                title(locale: "fr")
+                location(locale: "fr")
+                date(locale: "fr")
+                description(locale: "fr") {
+                    json
+                }
+                icon {
+                    name
                 }
             }
         }

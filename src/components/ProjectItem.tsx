@@ -1,13 +1,15 @@
 import { useRef } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { IProjectItem, IProject } from '../Types';
+import { IProject } from '../types/Projects';
 import { CgClose } from "react-icons/cg"
 import { FaExternalLinkAlt, FaCode } from "react-icons/fa"
 import { useScrollConstraints } from "../../utils/use-scroll-constraints";
 import { useWheelScroll } from "../../utils/use-wheel-scroll";
 import { useQuery } from '@apollo/client';
-import { GET_PROJECTS } from '../../utils/fetchData'
+import { GET_PROJECTS_FR } from '../../utils/fetchData'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { Document, BLOCKS } from "@contentful/rich-text-types";
 import Carousel from "./Carousel";
 
 const ProjectItem = () => {
@@ -28,7 +30,7 @@ const ProjectItem = () => {
     };
   }
 
-  console.log(isClosed.current)
+  console.log("Is closed ? ", isClosed.current)
   
   function checkZIndex(latest:any) {
     if (isSelected) {
@@ -50,19 +52,28 @@ const ProjectItem = () => {
     );
   }
   
-  const { loading, error, data } = useQuery(GET_PROJECTS);
+  const { loading, error, data } = useQuery(GET_PROJECTS_FR);
 
   if (loading) return <>Loading...</>;
   if (error) return <>Error! {error.message}</>;
 
-  let projects = data?.projects?.data
+  let projects = data?.projectsCollection?.items
+
   if (!projects) return <>Loading...</>;
 
-  const projectData = projects.find((proj:IProject) => `/${proj.attributes.slug}` === location.pathname)
-  const project = projectData?.attributes
-  if (!project) return <>Loading...</>;
-  const { title, slug, images, date, category, techs, description, source, url }:IProjectItem = project
-  const covers = [...images?.data].reverse();
+  const projectData = projects.find((proj:IProject) => `/${proj.slug}` === location.pathname)
+
+  if (!projectData) return <>Loading...</>;
+
+  const { title, slug, imagesCollection, date, category, techsCollection, description, source, url }:IProject = projectData
+  const content = description.json
+  const covers = [...imagesCollection?.items]
+
+  const options = {
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (node:any, children:any) => <p className="py-3">{children}</p>,
+    }
+  };
   
   return (
     <div ref={containerRef}>
@@ -106,7 +117,7 @@ const ProjectItem = () => {
             layoutId={`title-container-${slug}`}
           >
             <div className="flex justify-between px-6 py-2 text-white bg-cyan-900">
-              <span className="font-semibold">{category.data.attributes.Category}</span>
+              <span className="font-semibold">{category.name}</span>
               <span className="font-semibold">{date}</span>
             </div>
             <div className="mx-6 mt-5 text-3xl font-semibold">
@@ -114,16 +125,16 @@ const ProjectItem = () => {
             </div>
           </motion.div>
           <motion.div className="mx-6 my-5 linebreak" animate>
-            {description}
+            {documentToReactComponents(content as Document, options)} 
           </motion.div>
           <hr />
           <motion.div>
             <div className={`mx-6 pt-4 ${(!source && !url) && "pb-6"}`}>
               <div className="flex font-semibold">Techs :</div>
               <div className=''>
-                {techs.map((tech:{tech:string}, i:number) => (
+                {techsCollection.items.map((tech:any, i:number) => (
                   <span key={i}>
-                     { (i ? ', ' : '') + tech.tech }
+                     { (i ? ', ' : '') + tech.name }
                   </span>
                 ))}
               </div>

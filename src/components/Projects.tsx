@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { IProject, IProjectItem } from '../Types';
+import { IProject } from '../types/Projects';
 import { useQuery } from '@apollo/client';
-import { GET_PROJECTS } from '../../utils/fetchData'
+import { GET_PROJECTS_FR } from '../../utils/fetchData'
 
-function Card({ title, slug, images, category }:IProjectItem) {
-  const cover = [...images?.data].reverse();
+function Card({ title, slug, imagesCollection, category, isSelected }:IProject) {
+  const cover = [...imagesCollection?.items]
+  console.log("Is selected : ", isSelected)
   return (
     <motion.li whileHover={{ scale: 1.03 }} className="card h-[80vw] sm:h-[40vw] lg:h-[25vw]">
       <div className="card-content-container">
@@ -14,13 +15,13 @@ function Card({ title, slug, images, category }:IProjectItem) {
             className="card-image-container"
             layoutId={`card-image-container-${slug}`}
           >
-            <img className="card-image" src={`https://admin.aurelientrouble.com${cover[0].attributes.url}`} alt={title} />
+            <img className="card-image" src={cover[0].url} alt={title} />
           </motion.div>
           <motion.div
             className="absolute left-6 top-4 max-w-[300px] caption-proj"
             layoutId={`title-container-${slug}`}
           >
-            <span className="uppercase">{category.data.attributes.Category}</span>
+            <span className="uppercase">{category.name}</span>
             <h2 className=" font-bold">{title}</h2>
           </motion.div>
         </motion.div>
@@ -31,17 +32,17 @@ function Card({ title, slug, images, category }:IProjectItem) {
 }
 
 const Projects = ({ selectedId }:{selectedId:string|undefined}) => {
-  const { loading, error, data } = useQuery(GET_PROJECTS);
+  const { loading, error, data } = useQuery(GET_PROJECTS_FR);
 
   if (loading) return <>Loading...</>;
   if (error) return <>Error! {error.message}</>;
-  let projects = data?.projects?.data
-
+  let projects = data?.projectsCollection?.items
+  console.log("Selected project id : ", selectedId)
   return (
     <section id="projets" className="py-20 mx-10 lg:mx-20">
       <ul className="grid grid-cols-1 gap-8 pb-10 sm:grid-cols-2 lg:grid-cols-3">
-        {[...projects].reverse().map((project:IProject) => (
-          <Card key={project.attributes.slug} {...project.attributes} isSelected={project.attributes.slug === selectedId} />
+        {[...projects].sort((a, b) => b.id - a.id).map((project:IProject) => (
+          <Card key={project.slug} {...project} isSelected={project.slug === selectedId} />
         ))}
       </ul>
     </section>

@@ -1,10 +1,13 @@
 import { MdWork, MdSchool } from "react-icons/md"
 import { motion } from "framer-motion"
-import { ITimeElement, ITimeAttributes } from '../Types';
+import { ITimeElement } from '../types/TimelineEvents';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { Document } from "@contentful/rich-text-types";
 
 const TimelineElement = ({element}: {element:ITimeElement}) => {
     const id = element.id    
-    const { title, location, date, description, icon  }:ITimeAttributes = element.attributes
+    const { title, location, date, description, icon  } = element
+    const content = description.json
     const iconSelect = (icon: string) => {
         switch (icon) {
             case "work":
@@ -42,11 +45,10 @@ const TimelineElement = ({element}: {element:ITimeElement}) => {
                     className='relative pt-12 xs:absolute md:left-1/2 md:-translate-x-6'
                 >
                     <div className='absolute flex left-6 md:left-0 inset-0 items-center justify-center text-3xl text-white bg-pink-800 w-12 h-12 rounded-full border-2 border-white shadow-xl'>
-                        {iconSelect(icon)}
+                        {iconSelect(icon.name)}
                     </div>
                 </motion.div>
                 <div className="absolute">
-                    
                 </div>
                 <motion.div 
                     initial={{ 
@@ -75,7 +77,7 @@ const TimelineElement = ({element}: {element:ITimeElement}) => {
                             <span className="text-sm font-semibold text-teal-700 tracking-wide">{location}</span>
                         </p>
                         <h4 className='text-lg font-semibold pt-1'>{title}</h4>
-                        <p className='pt-1'>{description}</p>
+                        <p className='pt-1'>{documentToReactComponents(content as Document)} </p>
                     </div>
                 </motion.div>
             </div>

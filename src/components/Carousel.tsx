@@ -55,7 +55,7 @@ const Carousel = ({covers}:any) => {
             <AnimatePresence initial={false} custom={direction}>
                 <motion.img
                     key={page}
-                    src={`https://admin.aurelientrouble.com${covers[imageIndex].attributes.url}`}
+                    src={covers[imageIndex].url}
                     custom={direction}
                     variants={variants}
                     initial="enter"

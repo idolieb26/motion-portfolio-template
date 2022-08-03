@@ -1,14 +1,16 @@
 import TimelineElement from './TimelineElement';
 import { useQuery } from '@apollo/client';
-import { GET_TIMELINE } from '../../utils/fetchData'
-import { ITimeElement } from '../Types';
+import { GET_TIMELINE_FR } from '../../utils/fetchData'
+import { ITimeElement } from '../types/TimelineEvents';
 
 const Timeline = () => {
-    const { loading, error, data } = useQuery(GET_TIMELINE);
+    const { loading, error, data } = useQuery(GET_TIMELINE_FR);
 
     if (loading) return <>Loading...</>;
     if (error) return <>Error! {error.message}</>;
-    let TimeLineData = data?.timelineEvents?.data
+    let TimeLineData = data?.timelineEventCollection?.items
+
+    console.log("Timeline data: ", data)
     
     return (
         <section id="apropos" className="relative z-0 mx-10 antialiased lg:mx-20">
@@ -21,7 +23,7 @@ const Timeline = () => {
                     <div 
                         className="absolute inset-0 z-0 w-2 h-full bg-white shadow-md left-17 md:mx-auto md:left-0 md:right-0"
                     ></div>
-                    {[...TimeLineData].reverse().map((element:ITimeElement) => (
+                    {[...TimeLineData].sort((a, b) => b.id - a.id).map((element:ITimeElement) => (
                         <TimelineElement key={element.id} element={element} />
                     ))}
                 </div>
