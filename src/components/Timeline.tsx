@@ -16,7 +16,7 @@ const Timeline = () => {
         <section id="apropos" className="relative z-0 mx-10 antialiased lg:mx-20">
             <hr />
             <div>
-                <h3 className="py-6 text-4xl text-white">
+                <h3 className="py-6 text-4xl text-white text-center">
                     A propos de moi
                 </h3>
                 <div className='container relative flex flex-col px-6 mx-auto my-6 space-y-8'>

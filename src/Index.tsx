@@ -5,6 +5,7 @@ import Technologies from './components/Technologies';
 import Timeline from './components/Timeline';
 import ProjectItem from "./components/ProjectItem";
 import Projects from "./components/Projects";
+import Contact from "./components/Contact";
 
 const Index = () => {
     let { id } = useParams();
@@ -16,6 +17,7 @@ const Index = () => {
             <Projects selectedId={id} />
             <Technologies />
             <Timeline />
+            <Contact />
             <AnimatePresence>
                 {id && imageHasLoaded && <ProjectItem key="item" />}
             </AnimatePresence>

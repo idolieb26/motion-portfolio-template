@@ -5,17 +5,17 @@ const Technologies = () => {
     return (
         <section id="technos" className="mx-10 lg:mx-20 text-white">
             <hr />
-            <h2 className='text-4xl py-6'>Technologies</h2>
-            <div>
+            <h2 className='text-4xl py-6 text-center'>Technologies</h2>
+            <div className="text-center">
                 J'ai travaillé avec un certain nombre de technologies du monde du développement web.
                 Du Design, du Front-end jusqu'au Back-end.
             </div>
-            <div className='grid grid-cols-3 py-8'>
-                <div>
+            <div className='flex py-8 justify-evenly items-center'>
+                <div className="flex flex-col justify-center items-center">
                     <div className='text-3xl'>
                         <SiReact />
                     </div>
-                    <div className="pt-2">
+                    <div className="flex flex-col items-center pt-2">
                         <div className='text-xl font-semibold'>
                             Front-end
                         </div>
@@ -24,11 +24,11 @@ const Technologies = () => {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="flex flex-col justify-center items-center">
                     <div className='text-3xl'>
                         <CgDatabase />
                     </div>
-                    <div className="pt-2">
+                    <div className="flex flex-col items-center pt-2">
                         <div className='text-xl font-semibold'>
                             Back-End
                         </div>
@@ -37,11 +37,11 @@ const Technologies = () => {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="flex flex-col justify-center items-center">
                     <div className='text-3xl'>
                         <CgFigma />
                     </div>
-                    <div className="pt-2">
+                    <div className="flex flex-col items-center pt-2">
                         <div className='text-xl font-semibold'>
                             UI/UX
                         </div>
