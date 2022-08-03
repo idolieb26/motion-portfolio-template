@@ -45,6 +45,10 @@ const Contact = () => {
                 setTopic("")
                 setSubject("")
                 setMessage("")
+            } else {
+                console.log('Response failed')
+                setIsSending(false)
+                setIsError(true)
             }
         }).catch((err:any) => {
             setIsSending(false)
