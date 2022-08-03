@@ -120,7 +120,7 @@ const Contact = () => {
                                 <textarea id="message" value={message} onChange={e => setMessage(e.target.value)} className="bg-gray-50 h-32 border border-gray-300 font-medium text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Sujet du message" required />
                             </div>
                         </div>
-                        <div className={`flex ${(!isSubmitted && !isError) ? "justify-end" : "justify-between"}`}>
+                        <div className={`flex flex-col space-y-2 md:flex-row ${(!isSubmitted && !isError) ? "justify-end" : "justify-between"}`}>
                             {
                                 isSubmitted &&
                                 <div id="toast-success" className="flex items-center p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
